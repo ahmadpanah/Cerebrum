@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+httpx
+networkx
+python-louvain
+kubernetes
+scikit-learn
+pandas
