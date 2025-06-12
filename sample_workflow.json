@@ -1,0 +1,19 @@
+{
+  "id": "video-analytics-1",
+  "tasks": [
+    {"id": "ingest", "image": "nginx", "cpu_req": 100, "mem_req": 128},
+    {"id": "preprocess", "image": "ubuntu", "cpu_req": 500, "mem_req": 512},
+    {"id": "detect", "image": "python:3.9-slim", "cpu_req": 1000, "mem_req": 1024},
+    {"id": "alert", "image": "alpine", "cpu_req": 50, "mem_req": 64}
+  ],
+  "dependencies": {
+    "preprocess": ["ingest"],
+    "detect": ["preprocess"],
+    "alert": ["detect"]
+  },
+  "data_volumes": {
+    "ingest-preprocess": 256,
+    "preprocess-detect": 512,
+    "detect-alert": 1
+  }
+}
